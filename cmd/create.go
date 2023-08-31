@@ -30,7 +30,7 @@ func createDirectory(path string) error {
 }
 
 var createCmd = &cobra.Command{
-	Use:   "new <category> <title>",
+	Use:   "create <category> <title>",
 	Short: "Create a new markdown note",
 	Long:  "Create a new note within the given category and title",
 	Args:  cobra.ExactArgs(2),
