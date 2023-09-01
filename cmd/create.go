@@ -10,23 +10,33 @@ import (
 	"github.com/spf13/cobra"
 )
 
+func createDirectory(path string) error {
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		return os.MkdirAll(path, 0755) // 0755 is for permissions
+	}
+	return nil
+}
+
 func getBasePath() (string, error) {
 	basePath := os.Getenv("GOTES_PATH")
 	if basePath == "" {
-		return os.UserHomeDir()
+		homeDir, err := os.UserHomeDir()
+		if err != nil {
+			return "", fmt.Errorf("failed to get user's home directory: %w", err)
+		}
+		basePath = filepath.Join(homeDir, "gotes")
+
+		// Create the gotes directory if it doesn't exist
+		createDirectory(basePath)
+		if err != nil {
+			return "", fmt.Errorf("failed to create gotes directory: %w", err)
+		}
 	}
 	return basePath, nil
 }
 
 func getCurrentDate() string {
 	return time.Now().Format("2006-01-02")
-}
-
-func createDirectory(path string) error {
-	if _, err := os.Stat(path); os.IsNotExist(err) {
-		return os.MkdirAll(path, 0755) // 0755 is for permissions
-	}
-	return nil
 }
 
 var createCmd = &cobra.Command{
