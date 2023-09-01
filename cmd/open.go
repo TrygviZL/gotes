@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"fmt"
-	"io"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -103,26 +102,14 @@ func listNotesInteractive(category string) {
 	}
 }
 
-func listNotesWithSummary(w io.Writer, category string) {
-	// TODO: Implement logic to display note summaries
-}
-
 var listCmd = &cobra.Command{
-	Use:   "list [summary]",
-	Short: "List notes with optional summary",
-	Long:  "Displays a list of notes, with optional summary of each note",
-	Args:  cobra.MaximumNArgs(1),
+	Use:   "open",
+	Short: "Open a note for viewing or editing",
+	Long:  "Displays an interactive list of notes, allowing for you to select and open it in vim. Use arrow keys or vim bindings to navigate and enter key to open.",
+	Args:  cobra.NoArgs, // No arguments expected for this command
 	Run: func(cmd *cobra.Command, args []string) {
-		category, err := cmd.Flags().GetString("category")
-		if err != nil {
-			fmt.Printf("Error getting category: %s\n", err)
-			return
-		}
-		if len(args) > 0 && args[0] == "summary" {
-			listNotesWithSummary(os.Stdout, category)
-		} else {
-			listNotesInteractive(category)
-		}
+		category, _ := cmd.Flags().GetString("category")
+		listNotesInteractive(category)
 	},
 }
 
