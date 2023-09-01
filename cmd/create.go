@@ -64,11 +64,11 @@ var createCmd = &cobra.Command{
 		// Add metadata to file
 		currentDate := getCurrentDate()
 		frontMatter := fmt.Sprintf(`---
-		title: "%s"
-		category: "%s"
-		date_created: %s
-		date_modified: %s
-		---
+title: "%s"
+category: "%s"
+date_created: %s
+date_modified: %s
+---
 
 		`, title, category, currentDate, currentDate)
 
