@@ -11,7 +11,9 @@ Welcome to Gotes! A delightful, minimalist command-line tool for managing your n
 
 ### 1. Installation:
 
+```bash
 $ go install github.com/trygvizl/gotes@latest
+```
 
 Make sure you've Go installed and your `$GOPATH/bin` is in `$PATH`.
 
