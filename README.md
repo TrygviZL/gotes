@@ -1,4 +1,4 @@
-# 📔Gotes CLI
+# 📔🐐Gotes CLI
 
 Welcome to Gotes! A delightful, minimalist command-line tool for managing your notes inspired by the fusion of 'gotes' and 'notes'. Because we believe that sometimes, simple things, when merged, can create pure magic! ✨
 
@@ -7,9 +7,9 @@ Welcome to Gotes! A delightful, minimalist command-line tool for managing your n
 - **Effortless Note Creation**: Just provide a category and title, and you're ready to jot down your thoughts!
 - **Quick Access**: Dive straight into your notes with the `gotes open` command. Navigating your notes has never been this fun!
   
-  ## Getting Started:
+## Getting Started:
 
-  ### 1. Installation:
+### 1. Installation:
 
 $ go install github.com/trygvizl/gotes@latest
 
